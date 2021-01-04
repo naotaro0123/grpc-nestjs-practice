@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package hero;
+
+service HeroService {
+  // rpc FindOne (HeroById) returns (Hero);
+  rpc UnaryCall (HeroById) returns (Hero);
+  rpc ClientStreamExample (stream HeroById) returns (Hero);
+  rpc ServerStreamExample (HeroById) returns (stream Hero);
+  rpc BidirectionalStreamExample (stream HeroById) returns (stream Hero);
+}
+
+message HeroById {
+  int32 id = 1;
+}
+
+message Hero {
+  int32 id = 1;
+  string name = 2;
+}
